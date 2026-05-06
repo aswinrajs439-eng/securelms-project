@@ -1,3 +1,22 @@
+function openLogin() {
+
+    document
+        .getElementById("loginModal")
+        .style.display = "flex";
+}
+
+
+function closeLogin() {
+
+    document
+        .getElementById("loginModal")
+        .style.display = "none";
+}
+
+
+
+/* EMAIL VALIDATION */
+
 function validateEmail(email) {
 
     let pattern =
@@ -6,21 +25,71 @@ function validateEmail(email) {
     return pattern.test(email);
 }
 
+
+
+/* INPUT SANITIZATION */
+
+function sanitizeInput(input) {
+
+    return input
+        .replace(/[<>'"]/g, '')
+        .replace(/javascript:/gi, '');
+}
+
+
+
+/* LOGIN SYSTEM */
+
 function login() {
 
-    let email = prompt("Enter Email");
-    let password = prompt("Enter Password");
+    let email =
+        document.getElementById("email").value;
 
-    if(!validateEmail(email)) {
+    let password =
+        document.getElementById("password").value;
+
+
+    email = sanitizeInput(email);
+
+    password = sanitizeInput(password);
+
+
+
+    if (!validateEmail(email)) {
 
         alert("Invalid Email Format");
+
         return;
     }
 
-    if(email === "student@gmail.com" &&
-       password === "123456") {
+
+
+    if (
+        email.includes("<script>") ||
+        password.includes("<script>")
+    ) {
+
+        alert("Malicious Input Detected");
+
+        return;
+    }
+
+
+
+    if (
+        email === "student@gmail.com"
+        &&
+        password === "123456"
+    ) {
+
+        localStorage.setItem(
+            "secure_session",
+            btoa(email)
+        );
 
         alert("Login Successful");
+
+        closeLogin();
 
     } else {
 
@@ -28,10 +97,32 @@ function login() {
     }
 }
 
-login();
-function sanitizeInput(input) {
 
-    return input
-    .replace(/[<>'"]/g, '')
-    .replace(/javascript:/gi, '');
+
+/* ACCESS CONTROL */
+
+function enrollCourse(courseName) {
+
+    let currentSession =
+        localStorage.getItem(
+            "secure_session"
+        );
+
+
+    if (!currentSession) {
+
+        alert(
+            "Please Login First"
+        );
+
+        openLogin();
+
+        return;
+    }
+
+
+    alert(
+        "Successfully enrolled in "
+        + courseName
+    );
 }

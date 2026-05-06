@@ -1,39 +1,306 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>SecureLMS Enterprise</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- SECURITY HEADERS -->
+
+    <meta http-equiv="X-Content-Type-Options"
+          content="nosniff">
+
+    <meta http-equiv="X-Frame-Options"
+          content="DENY">
+
 </head>
 
 <body>
 
-    <header>
-        <h1>SecureLMS Enterprise</h1>
-    </header>
 
-    <section>
+    <!-- NAVBAR -->
 
-        <h2>Featured Courses</h2>
+    <header class="navbar">
 
-        <div>
-            <h3>Cybersecurity</h3>
-            <button onclick="login()">
-                Enroll
-            </button>
+        <div class="logo">
+            SecureLMS Enterprise
         </div>
 
-        <div>
-            <h3>Cloud Computing</h3>
-            <button onclick="login()">
-                Enroll
-            </button>
+        <nav>
+
+            <a href="#">Home</a>
+
+            <a href="#courses">Courses</a>
+
+            <a href="#dashboard">Dashboard</a>
+
+            <a href="#"
+               onclick="openLogin()">
+                Login
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <h1>
+            Build Your Future in Secure Cloud Technology
+        </h1>
+
+        <p>
+            Learn Cybersecurity,
+            Cloud Infrastructure
+            and DevOps Security.
+        </p>
+
+        <button onclick="openLogin()">
+            Start Learning →
+        </button>
+
+    </section>
+
+
+
+    <!-- COURSES -->
+
+    <section class="courses"
+             id="courses">
+
+        <h2>
+            Featured Courses
+        </h2>
+
+        <div class="course-container">
+
+
+            <!-- CARD 1 -->
+
+            <div class="course-card">
+
+                <div class="tag">
+                    Advanced
+                </div>
+
+                <div class="icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Ethical Hacking
+                </h3>
+
+                <p>
+                    Learn penetration testing,
+                    vulnerability scanning
+                    and cyber defense.
+                </p>
+
+                <button
+                    onclick="enrollCourse('Ethical Hacking')">
+
+                    Enroll Now →
+
+                </button>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="course-card">
+
+                <div class="tag">
+                    Intermediate
+                </div>
+
+                <div class="icon">
+                    ☁️
+                </div>
+
+                <h3>
+                    Azure Cloud Security
+                </h3>
+
+                <p>
+                    Learn cloud hosting,
+                    Azure deployment
+                    and secure infrastructure.
+                </p>
+
+                <button
+                    onclick="enrollCourse('Cloud Security')">
+
+                    Enroll Now →
+
+                </button>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="course-card">
+
+                <div class="tag">
+                    Beginner
+                </div>
+
+                <div class="icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Network Security
+                </h3>
+
+                <p>
+                    Learn VPNs,
+                    encryption,
+                    firewalls
+                    and secure communication.
+                </p>
+
+                <button
+                    onclick="enrollCourse('Network Security')">
+
+                    Enroll Now →
+
+                </button>
+
+            </div>
+
         </div>
 
     </section>
 
+
+
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard"
+             id="dashboard">
+
+        <h2>
+            My Dashboard
+        </h2>
+
+        <div class="stats">
+
+
+            <div class="stat-box">
+
+                <h1>4</h1>
+
+                <p>
+                    Courses Enrolled
+                </p>
+
+            </div>
+
+
+
+            <div class="stat-box">
+
+                <h1>2</h1>
+
+                <p>
+                    Completed
+                </p>
+
+            </div>
+
+
+
+            <div class="stat-box">
+
+                <h1>75%</h1>
+
+                <p>
+                    Overall Progress
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- LOGIN MODAL -->
+
+    <div class="modal"
+         id="loginModal">
+
+        <div class="modal-content">
+
+            <span class="close-btn"
+                  onclick="closeLogin()">
+
+                ×
+
+            </span>
+
+            <h2>
+                Secure Login
+            </h2>
+
+            <p>
+                Login to access courses securely.
+            </p>
+
+
+            <input type="email"
+                   id="email"
+                   placeholder="Enter Email">
+
+
+            <input type="password"
+                   id="password"
+                   placeholder="Enter Password">
+
+
+            <button onclick="login()">
+                Continue →
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2025 CyberNova Academy |
+            Secure Learning Platform
+        </p>
+
+    </footer>
+
+
     <script src="script.js"></script>
 
 </body>
-
 </html>
